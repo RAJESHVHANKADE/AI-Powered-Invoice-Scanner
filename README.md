@@ -1,95 +1,339 @@
-# AI-Powered Invoice Scanner
+# AI-Powered Invoice Understanding System
 
-AI-Powered Invoice Scanner is a web application that utilizes Google's Gemini Pro Vision model to analyze invoice images and extract relevant information. This tool is designed to simplify the invoice processing workflow by providing users with insights based on the uploaded invoice.
+An AI-powered document intelligence application that extracts and analyzes information from invoice images using Google's Gemini Vision model.
 
-## Features
+The system enables users to upload invoice documents and ask natural language questions about invoice content, simplifying invoice review and information extraction workflows.
 
-- Upload an invoice image in JPG, PNG, or JPEG format.
-- Get detailed analysis and insights from the invoice content.
-- Leverage Google's Gemini Pro Vision model for powerful generative AI capabilities.
-- Simple and intuitive web interface built with Streamlit.
+---
 
-## Installation
+## Business Problem
 
- 1. **Clone the repository:**
-  ```bash
-     git clone https://github.com/yourusername/invoice-scanner.git
-     cd invoice-scanner
-  ```
+Organizations process large volumes of invoices containing important financial and operational information.
 
- 2. **Create and activate a virtual environment:**
- ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
- ```
+Manually reviewing invoices can be:
 
- 3. **Install the required packages:**
- ```bash
-    pip install -r requirements.txt
- ```
+* Time-consuming
+* Error-prone
+* Resource-intensive
+* Difficult to scale
 
- 4. **Set up environment variables:**
- Create a .env file in the root directory.
+Common invoice processing tasks include:
 
- Add your Google API key:
- ```bash
-    GOOGLE_API_KEY=your_api_key_here
- ```
+* Identifying vendor information
+* Extracting invoice numbers
+* Reviewing billing details
+* Verifying invoice amounts
+* Understanding payment information
 
-## Usage
+Automating these activities can improve efficiency and reduce manual effort.
 
-1. **Run the Streamlit application:**
-```bash
-   streamlit run sentiment_analysis.py
+---
+
+## Project Goal
+
+Develop an AI-powered assistant capable of:
+
+* Understanding invoice images
+* Extracting invoice details
+* Answering user questions about invoice content
+* Providing invoice insights through natural language interactions
+
+---
+
+## Solution Overview
+
+The application combines image understanding capabilities with Large Language Models (LLMs) to analyze invoice documents.
+
+Users upload an invoice image and submit questions. The system processes the image using Gemini Vision and generates context-aware responses based on the invoice content.
+
+---
+
+# Architecture
+
+```mermaid
+flowchart LR
+
+    A[Invoice Image]
+
+    B[Image Processing]
+
+    C[Gemini Vision Model]
+
+    D[Invoice Understanding]
+
+    E[User Question]
+
+    F[Prompt Construction]
+
+    G[LLM Response Generation]
+
+    H[Invoice Insights]
+
+    A --> B
+    B --> C
+    C --> D
+
+    E --> F
+    D --> F
+
+    F --> G
+    G --> H
 ```
 
-2. **Upload an invoice image.**
+---
 
-3. **Enter your query in the input prompt.**
+## End-to-End Workflow
 
-4. **Click the "Tell me about invoice" button to get insights.**
+### Invoice Processing
 
-## Example
-Upload an image of an invoice and ask questions like:
+1. User uploads an invoice image.
+2. The image is processed and sent to Gemini Vision.
+3. Invoice content is analyzed.
+4. Key invoice information is interpreted by the model.
 
-**"What is the total amount?"**
+### Question Answering
 
-**"Who is the vendor?"**
+1. User submits a question.
+2. Invoice content and user query are combined into a prompt.
+3. Gemini generates a response.
+4. The answer is displayed to the user.
 
-## Dependencies
-`streamlit`
-`PIL`
-`google-generativeai`
-`python-dotenv` 
+---
 
-## License
+## Key Features
 
-**This project is licensed under the MIT License.**
+### Invoice Understanding
 
-## Contributing
+Analyzes invoice images and interprets document content.
 
-Feel free to open issues or submit pull requests if you would like to contribute to this project.
+### Natural Language Question Answering
 
+Allows users to ask questions about uploaded invoices.
 
-## Happy coding!
+### Visual Document Analysis
 
+Processes invoice images directly without requiring manual data entry.
 
-### Instructions
+### Generative AI-Powered Insights
 
-1. **Replace** `yourusername` and `your_api_key_here` with your GitHub username and your actual Google API key.
+Uses Gemini Vision to generate contextual responses.
 
-2. **Add a `requirements.txt` file** with the necessary packages:
+### Interactive Web Interface
 
-   ```plaintext
-   streamlit
-   Pillow
-   google-generativeai
-   python-dotenv
-   ```
+Provides a simple Streamlit interface for invoice uploads and analysis.
 
-3. **Ensure your .env file is correctly set up with your Google API key.**
+---
 
-This README.md provides an overview, installation instructions, usage details, and examples to help users get started with your project.
+## Example Questions
 
+Users can ask questions such as:
 
+```text
+What is the invoice number?
+```
 
+```text
+Who is the vendor?
+```
+
+```text
+What is the total payable amount?
+```
+
+```text
+What is the invoice date?
+```
+
+```text
+What payment terms are mentioned?
+```
+
+---
+
+## Example Workflow
+
+### User Uploads
+
+```text
+Invoice_001.jpg
+```
+
+### User Question
+
+```text
+What is the total invoice amount?
+```
+
+### Generated Response
+
+```text
+The total invoice amount is ₹52,480.
+```
+
+---
+
+## Architecture Components
+
+| Component           | Responsibility                          |
+| ------------------- | --------------------------------------- |
+| Streamlit UI        | User interaction                        |
+| Image Upload Module | Accept invoice images                   |
+| Gemini Vision       | Analyze invoice content                 |
+| Prompt Layer        | Combine invoice context with user query |
+| Response Engine     | Generate answers                        |
+| Output Layer        | Display invoice insights                |
+
+---
+
+## Project Structure
+
+```text
+AI-Powered-Invoice-Scanner/
+
+├── app.py
+├── requirements.txt
+├── .env
+├── README.md
+│
+├── assets/
+│
+├── sample_invoices/
+│
+└── screenshots/
+```
+
+---
+
+## Technology Stack
+
+### Programming Language
+
+* Python
+
+### Generative AI
+
+* Google Gemini Vision
+
+### Web Application
+
+* Streamlit
+
+### Image Processing
+
+* Pillow (PIL)
+
+### Environment Management
+
+* Python Dotenv
+
+---
+
+## Technical Concepts Demonstrated
+
+* Generative AI
+* Multimodal AI
+* Vision-Language Models
+* Document Intelligence
+* Prompt Engineering
+* Image Understanding
+* Invoice Analysis
+* Streamlit Application Development
+* AI-Powered Question Answering
+
+---
+
+## Supported File Formats
+
+The application supports:
+
+* JPG
+* JPEG
+* PNG
+
+---
+
+## Getting Started
+
+### Clone Repository
+
+```bash
+git clone https://github.com/<your-username>/AI-Powered-Invoice-Scanner.git
+cd AI-Powered-Invoice-Scanner
+```
+
+### Create Virtual Environment
+
+```bash
+python -m venv .venv
+```
+
+### Activate Environment
+
+Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+Linux/macOS:
+
+```bash
+source .venv/bin/activate
+```
+
+### Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Configure Environment Variables
+
+Create a `.env` file:
+
+```env
+GOOGLE_API_KEY=your_google_api_key
+```
+
+### Run Application
+
+```bash
+streamlit run app.py
+```
+
+### Open Application
+
+```text
+http://localhost:8501
+```
+
+---
+
+## Use Cases
+
+* Invoice Review Automation
+* Vendor Information Extraction
+* Financial Document Analysis
+* Accounts Payable Support
+* Invoice Validation Workflows
+* Intelligent Document Processing (IDP)
+
+---
+
+## Sample Technology Workflow
+
+```text
+Invoice Image
+      ↓
+Gemini Vision
+      ↓
+Invoice Understanding
+      ↓
+User Question
+      ↓
+Prompt Construction
+      ↓
+AI Response
+      ↓
+Invoice Insights
+```
