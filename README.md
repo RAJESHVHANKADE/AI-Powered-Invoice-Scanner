@@ -18,7 +18,7 @@ Manually reviewing invoices can be:
 * Difficult to scale
 
 Common invoice processing tasks include:
-
+ 
 * Identifying vendor information
 * Extracting invoice numbers
 * Reviewing billing details
